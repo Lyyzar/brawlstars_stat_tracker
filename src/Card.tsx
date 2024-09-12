@@ -1,0 +1,97 @@
+import { BrawlerStat } from "./interfaces";
+
+const Card: React.FC<BrawlerStat> = ({
+  gadgets,
+  starPowers,
+  rank,
+  trophies,
+  highestTrophies,
+  power,
+  gears,
+  name,
+}) => {
+  const formattedName =
+    name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+  const imageSource = `/assets/brawlers/Brawl_${formattedName}.png`;
+
+  let value = 0;
+  if (rank < 5) {
+    value = 1;
+  } else if (rank < 10) {
+    value = 5;
+  } else if (rank < 15) {
+    value = 10;
+  } else if (rank < 20) {
+    value = 15;
+  } else if (rank < 25) {
+    value = 20;
+  } else if (rank < 30) {
+    value = 25;
+  } else if (rank < 35) {
+    value = 30;
+  }
+
+  const rankImageSource = `/assets/ranks/${value}.webp`;
+  return (
+    <div
+      id="main"
+      className="flex w-450 m-10 bg-red-600 rounded-lg text-white transform hover:scale-105 transition-transform duration-300"
+      //onClick={handleClick}
+    >
+      <div id="image" className="h-48 w-auto">
+        <img
+          src={imageSource}
+          className="h-full w-full rounded-l"
+          alt="brawler image"
+        />
+      </div>
+      <div className="w-full my-2">
+        <div id="1st row" className="flex flex-row mb-2">
+          <div className="font-semibold text-xl mx-2">{name.toUpperCase()}</div>
+          <div className="mb-2 flex items-center justify-center w-8 h-8 bg-pink-500 border border-black border-1 shadow-lg rounded-full">
+            <div className="flex items-center justify-center w-5 h-5 bg-purple-900 rounded-full">
+              <span className="flex items-center justify-center text-white text-xs font-bold shadow-lg">
+                {power}
+              </span>
+            </div>
+          </div>
+          <div id="gadgets" className="mx-1">
+            {gadgets.length > 0 ? (
+              <img
+                className="w-10 h-10"
+                src="/assets/gadget.webp"
+                alt="star_power"
+              />
+            ) : null}
+          </div>
+          <div id="star_power" className="mx-1">
+            {starPowers.length > 0 ? (
+              <img
+                className="w-10 h-10"
+                src="/assets/star_power.webp"
+                alt="star_power"
+              />
+            ) : null}
+          </div>
+        </div>
+
+        <div id="rank" className="flex  mb-2">
+          <img src={rankImageSource} alt="rank" className="w-6 h-6 mx-2" />
+          <div>Rank: {rank}</div>
+        </div>
+        <div id="highest_trophies" className="flex mx-2 mb-2">
+          <img src="./assets/trophy.png" alt="trophy" className="w-6 h-6" />
+          <div className="font-bold ml-2">
+            Highest trophies: {highestTrophies}
+          </div>
+        </div>
+        <div id="trophy" className="flex mx-2">
+          <img src="./assets/trophy.png" alt="trophy" className="w-6 h-6 " />
+          <div className="ml-2">Current trophies: {trophies}</div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Card;
