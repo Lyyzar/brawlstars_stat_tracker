@@ -17,6 +17,7 @@ This project is a **React** and **TypeScript**-based web application that allows
 - **React**: For building the user interface and managing component-based architecture.
 - **TypeScript**: To ensure type safety and scalability in the code.
 - **JavaScript**: For handling certain dynamic features.
+- **Tailwind CSS**: For styling and responsive design.
 - **Brawl Stars API**: Fetches real-time data from the official game.
 - **Backend**: Handles backend logic (API requests and data processing).
 
