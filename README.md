@@ -26,7 +26,7 @@ This project is a **React** and **TypeScript**-based web application that allows
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/your-username/brawlstars-stats-query.git
+    git clone https://github.com/Lyyzar/brawlstars_stat_tracker.git
     ```
 
 2. **Navigate to the project directory**:
