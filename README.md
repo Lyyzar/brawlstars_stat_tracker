@@ -1,4 +1,4 @@
-# Brawlstars Stats Tracker
+# Brawl Stars Stats Tracker
 
 ### Description
 This project is a **React** and **TypeScript**-based web application that allows **Brawl Stars** players to query their in-game statistics using the **Brawl Stars API**. Players can input their **gamertag** to retrieve detailed information about their profile, brawler stats, and use an upgrade calculator to estimate the cost of upgrading brawlers to a desired level.
