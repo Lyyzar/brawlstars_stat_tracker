@@ -34,8 +34,6 @@ function Home() {
     trophies: playerInfo.trophies,
     "3vs3Victories": playerInfo["3vs3Victories"],
     icon: playerInfo.icon,
-    expLevel: playerInfo.expLevel,
-    expPoints: playerInfo.expPoints,
     soloVictories: playerInfo.soloVictories,
     duoVictories: playerInfo.duoVictories,
   };
@@ -167,6 +165,15 @@ function Home() {
                       {Object.entries(my_Data).map(([key, value]) => (
                         <li key={key}>
                           <strong>{key}: </strong> {value.toString()}
+                          {key === "highestTrophies" &&
+                            playerInfo.highestTrophies >
+                              playerInfo.trophies && (
+                              <img
+                                className="w-10 h-5 inline"
+                                src="/assets/red_arrow.png"
+                                alt="red_arrow"
+                              />
+                            )}
                         </li>
                       ))}
                     </ul>
