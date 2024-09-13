@@ -12,7 +12,9 @@ const Card: React.FC<BrawlerStat> = ({
 }) => {
   const formattedName =
     name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
-  const imageSource = `/assets/brawlers/Brawl_${formattedName}.png`;
+  const imageSource = `/assets/brawlers/Brawl_${formattedName
+    .split(" ")
+    .join("")}.png`;
 
   let value = 0;
   if (rank < 5) {
@@ -35,7 +37,7 @@ const Card: React.FC<BrawlerStat> = ({
   return (
     <div
       id="main"
-      className="flex w-450 m-10 bg-red-600 rounded-lg text-white transform hover:scale-105 transition-transform duration-300"
+      className="flex max-w-[400px] m-10 bg-red-600 rounded-lg text-white transform hover:scale-105 transition-transform duration-300"
       //onClick={handleClick}
     >
       <div id="image" className="h-48 w-auto">

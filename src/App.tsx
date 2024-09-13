@@ -15,7 +15,7 @@ const App: React.FC = () => {
               rank={1}
               power={2}
               name="Kit"
-              gears={2}
+              gears={[]}
               highestTrophies={1000}
               trophies={1000}
               starPowers={[]}

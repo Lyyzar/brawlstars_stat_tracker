@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { getPlayerInfo } from "./api";
 import { Player } from "./interfaces";
 import Card from "./Card";
+import SearchBar from "./SearchBar";
 
 function Home() {
   const [activeTab, setActiveTab] = useState<string>("Profile");
@@ -62,7 +63,7 @@ function Home() {
   };
 
   return (
-    <div className="bg-[url('https://supercell.com/images/1a5b69311180a4a1c374e10556941f05/hero_bg_brawlstars.a385872a.webp')] bg-cover bg-center h-screen text-gray-800">
+    <div className="h-screen text-gray-800">
       {/* Header Section */}
       <header className="bg-white text-black">
         <nav className="container mx-auto flex justify-between items-center py-4">
@@ -93,14 +94,9 @@ function Home() {
       </header>
 
       {/* Hero Section */}
-      <section
-        className="bg-cover bg-center h-screen"
-        style={{
-          backgroundImage: "url('https://source.unsplash.com/random/1600x900')",
-        }}
-      >
+      <section className="bg-[url('https://supercell.com/images/1a5b69311180a4a1c374e10556941f05/hero_bg_brawlstars.a385872a.webp')] bg-cover bg-center  h-screen ">
         <div className="flex pt-24 justify-center h-full bg-black bg-opacity-50">
-          <div className="text-center text-white">
+          <div className="text-center w-1/2 text-white">
             <h1 className="text-5xl font-bold mb-4">Enter your Player Tag!</h1>
             <form onSubmit={handleSubmit}>
               <input
@@ -120,44 +116,48 @@ function Home() {
               </button>
             </form>
             <div
-              id="tabs"
-              className="flex flex-row m-10 border-b-2 border-white justify-evenly"
+              id="container-for-tabs-and-data"
+              className="flex flex-col h-screen items-center"
             >
               <div
-                className={`mx-2 text-bold p-3 rounded-lg cursor-pointer hover:opacity-50 ${
-                  activeTab === "Profile"
-                    ? "bg-white text-black"
-                    : "bg-transparent"
-                }`}
-                onClick={() => handleClick("Profile")}
+                id="tabs"
+                className="flex flex-row m-10 border-b-2 border-white max-w-[700px] items-center justify-evenly"
               >
-                Your Stats
+                <div
+                  className={`mx-2 text-bold w-40 p-3 rounded-lg cursor-pointer hover:opacity-50 ${
+                    activeTab === "Profile"
+                      ? "bg-white text-black"
+                      : "bg-transparent"
+                  }`}
+                  onClick={() => handleClick("Profile")}
+                >
+                  Your Stats
+                </div>
+                <div
+                  className={`mx-2 text-bold w-40 p-3 rounded-lg cursor-pointer hover:opacity-50 ${
+                    activeTab === "Brawlers"
+                      ? "bg-white text-black"
+                      : "bg-transparent"
+                  }`}
+                  onClick={() => handleClick("Brawlers")}
+                >
+                  Brawler Stats
+                </div>
+                <div
+                  className={`mx-2 text-bold w-40 p-3 rounded-lg cursor-pointer hover:opacity-50 ${
+                    activeTab === "Calculator"
+                      ? "bg-white text-black"
+                      : "bg-transparent"
+                  }`}
+                  onClick={() => handleClick("Calculator")}
+                >
+                  Upgrade Calculator
+                </div>
               </div>
-              <div
-                className={`mx-2 text-bold p-3 rounded-lg cursor-pointer hover:opacity-50 ${
-                  activeTab === "Brawlers"
-                    ? "bg-white text-black"
-                    : "bg-transparent"
-                }`}
-                onClick={() => handleClick("Brawlers")}
-              >
-                Brawler Stats
-              </div>
-              <div
-                className={`mx-2 text-bold p-3 rounded-lg cursor-pointer hover:opacity-50 ${
-                  activeTab === "Calculator"
-                    ? "bg-white text-black"
-                    : "bg-transparent"
-                }`}
-                onClick={() => handleClick("Calculator")}
-              >
-                Upgrade Calculator
-              </div>
-            </div>
-            <div>
+
               {activeTab === "Profile" &&
                 (playerInfo.trophies > 0 ? (
-                  <div className="bg-white bg-opacity-50 rounded">
+                  <div className="bg-gray-600 bg-opacity-50 w-[500px] rounded">
                     <h2 style={{ color: `#${playerInfo.nameColor.slice(-6)}` }}>
                       Player Info:
                     </h2>
@@ -180,7 +180,7 @@ function Home() {
                   </div>
                 ) : null)}
               {activeTab === "Brawlers" && (
-                <div className="flex flex-wrap bg-white bg-opacity-50">
+                <div className="flex flex-wrap h-[800px] w-2/8 overflow-y-scroll justify-center bg-gray-600 bg-opacity-50 mx-auto">
                   {playerInfo.brawlers.map((brawler) => (
                     <Card
                       rank={brawler.rank}
@@ -197,8 +197,8 @@ function Home() {
                 </div>
               )}
               {activeTab === "Calculator" && (
-                <div className="content bg-gray-200 p-4 mt-4 rounded-lg">
-                  Content for Text 3
+                <div className="text-black w-2/3">
+                  <SearchBar brawlerStatList={playerInfo.brawlers} />
                 </div>
               )}
             </div>
