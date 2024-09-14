@@ -3,9 +3,11 @@ import {
   brawlers,
   BrawlerStat,
   emptyBrawlerStat,
+  emptyIconNumbers,
   SearchBarProps,
 } from "./interfaces";
 import Card from "./Card";
+import CalculatorRightSide from "./CalculatorRightSide";
 
 const SearchBar: React.FC<SearchBarProps> = ({ brawlerStatList }) => {
   const [inputValue, setInputValue] = useState("");
@@ -15,18 +17,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ brawlerStatList }) => {
   const [requiredCoins, setRequiredCoins] = useState<number>(0);
   const [requiredPowerPoints, setRequiredPowerPoints] = useState<number>(0);
   const [isToggled, setIsToggled] = useState<boolean>(false);
-
-  const handleToggle = () => {
-    console.log(isToggled);
-    setIsToggled(!isToggled);
-    console.log(isToggled);
-    if (!isToggled) {
-      console.log(isToggled);
-      setRequiredCoins(requiredCoins + 5000);
-    } else {
-      setRequiredCoins(requiredCoins - 5000);
-    }
-  };
+  const [iconNumbers, setIconNumbers] = useState(emptyIconNumbers);
 
   const filteredValues = brawlers.filter((value) =>
     value.toLowerCase().includes(inputValue.toLowerCase())
@@ -69,6 +60,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ brawlerStatList }) => {
   const handleMaxOut = () => {
     let reqCoins = 0;
     let reqPowerPoints = 0;
+    let starPowers = 0;
+    let gadgets = 0;
+    let gears = 0;
 
     switch (upgradeBrawler.power) {
       case 1:
@@ -127,7 +121,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ brawlerStatList }) => {
     switch (upgradeBrawler.starPowers.length) {
       case 0:
         reqCoins += 2000;
+        starPowers = 1;
         break;
+
       default:
         break;
     }
@@ -135,7 +131,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ brawlerStatList }) => {
     switch (upgradeBrawler.gadgets.length) {
       case 0:
         reqCoins += 1000;
+        gadgets = 1;
         break;
+
       default:
         break;
     }
@@ -143,17 +141,33 @@ const SearchBar: React.FC<SearchBarProps> = ({ brawlerStatList }) => {
     switch (upgradeBrawler.gears.length) {
       case 0:
         reqCoins += 1000;
+        gears = 2;
         break;
+
       case 1:
         reqCoins += 2000;
+        gears = 1;
         break;
       default:
         break;
     }
 
-    console.log(reqCoins, reqPowerPoints);
+    setIconNumbers({
+      starPowers,
+      gadgets,
+      gears,
+    });
     setRequiredCoins(reqCoins);
     setRequiredPowerPoints(reqPowerPoints);
+
+    if (
+      upgradeBrawler.power === 11 &&
+      upgradeBrawler.starPowers.length > 0 &&
+      upgradeBrawler.gadgets.length > 0 &&
+      upgradeBrawler.gears.length === 2
+    ) {
+      alert("Your brawler is already maxed out!");
+    }
   };
 
   return (
@@ -165,6 +179,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ brawlerStatList }) => {
           onChange={(e) => {
             setInputValue(e.target.value);
             setUpgradeBrawler(emptyBrawlerStat);
+            setIconNumbers(emptyIconNumbers);
             setRequiredCoins(0);
             setIsToggled(false);
             setRequiredPowerPoints(0);
@@ -212,53 +227,15 @@ const SearchBar: React.FC<SearchBarProps> = ({ brawlerStatList }) => {
                 name={upgradeBrawler.name}
               />
             </div>
-            <div className="flex flex-col">
-              <div>
-                <label className="inline-flex items-center cursor-pointer">
-                  <input
-                    checked={isToggled}
-                    onChange={handleToggle}
-                    type="checkbox"
-                    value=""
-                    className="sr-only peer"
-                  />
-                  <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                  <span className="ms-3 text-md font-medium text-gray-900 dark:text-gray-300">
-                    Hypercharge
-                  </span>
-                </label>
-              </div>
-              <div className="text-xl text-white">
-                <div className="flex items-center mb-2">
-                  <p>
-                    Required coins:{" "}
-                    {Intl.NumberFormat("de-De").format(requiredCoins)}
-                  </p>
-                  <img
-                    className="w-8 h-7 inline"
-                    src="/assets/coin_icon.png"
-                    alt="coin"
-                  />
-                </div>
-                <div className="flex items-center mb-2">
-                  <p>
-                    Required power points:{" "}
-                    {Intl.NumberFormat("de-De").format(requiredPowerPoints)}
-                  </p>
-                  <img
-                    className="w-8 h-7"
-                    src="/assets/coin_icon.png"
-                    alt="coin"
-                  />
-                </div>
-              </div>
-              <button
-                onClick={() => handleMaxOut()}
-                className="bg-blue-600 hover:bg-blue-700 max-h-14 text-white py-2 px-4 ml-4 rounded-full"
-              >
-                Max out
-              </button>
-            </div>
+            <CalculatorRightSide
+              iconNumbers={iconNumbers}
+              isToggled={isToggled}
+              setIsToggled={setIsToggled}
+              requiredCoins={requiredCoins}
+              setRequiredCoins={setRequiredCoins}
+              requiredPowerPoints={requiredPowerPoints}
+              handleMaxOut={handleMaxOut}
+            />
           </div>
         ) : null}
       </div>

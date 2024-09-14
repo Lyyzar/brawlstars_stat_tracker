@@ -8,6 +8,7 @@ import SearchBar from "./SearchBar";
 function Home() {
   const [activeTab, setActiveTab] = useState<string>("Profile");
   const [playerTag, setPlayerTag] = useState<string>("");
+  const [showTabs, setShowTabs] = useState<boolean>(false);
   const [playerInfo, setPlayerInfo] = useState<Player>({
     club: { tag: "", name: "" },
     isQualifiedFromChampionshipChallenge: false,
@@ -41,7 +42,6 @@ function Home() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log();
     try {
       const playerInfo = await getPlayerInfo(playerTag);
       setPlayerInfo(playerInfo);
@@ -49,6 +49,7 @@ function Home() {
         message: "Successfull query",
         description: "You are successfully queried your information!",
       });
+      setShowTabs(true);
     } catch (error) {
       console.log(error, "error");
       notification.error({
@@ -58,7 +59,7 @@ function Home() {
     }
   };
 
-  const handleClick = (text: string) => {
+  const handleTabClick = (text: string) => {
     setActiveTab(text);
   };
 
@@ -119,41 +120,43 @@ function Home() {
               id="container-for-tabs-and-data"
               className="flex flex-col h-screen items-center"
             >
-              <div
-                id="tabs"
-                className="flex flex-row m-10 border-b-2 border-white max-w-[700px] items-center justify-evenly"
-              >
+              {showTabs && (
                 <div
-                  className={`mx-2 text-bold w-40 p-3 rounded-lg cursor-pointer hover:opacity-50 ${
-                    activeTab === "Profile"
-                      ? "bg-white text-black"
-                      : "bg-transparent"
-                  }`}
-                  onClick={() => handleClick("Profile")}
+                  id="tabs"
+                  className="flex flex-row m-10 border-b-2 border-white max-w-[700px] items-center justify-evenly"
                 >
-                  Your Stats
+                  <div
+                    className={`mx-2 text-bold w-40 p-3 rounded-lg cursor-pointer hover:opacity-50 ${
+                      activeTab === "Profile"
+                        ? "bg-white text-black"
+                        : "bg-transparent"
+                    }`}
+                    onClick={() => handleTabClick("Profile")}
+                  >
+                    Your Stats
+                  </div>
+                  <div
+                    className={`mx-2 text-bold w-40 p-3 rounded-lg cursor-pointer hover:opacity-50 ${
+                      activeTab === "Brawlers"
+                        ? "bg-white text-black"
+                        : "bg-transparent"
+                    }`}
+                    onClick={() => handleTabClick("Brawlers")}
+                  >
+                    Brawler Stats
+                  </div>
+                  <div
+                    className={`mx-2 text-bold w-40 p-3 rounded-lg cursor-pointer hover:opacity-50 ${
+                      activeTab === "Calculator"
+                        ? "bg-white text-black"
+                        : "bg-transparent"
+                    }`}
+                    onClick={() => handleTabClick("Calculator")}
+                  >
+                    Upgrade Calculator
+                  </div>
                 </div>
-                <div
-                  className={`mx-2 text-bold w-40 p-3 rounded-lg cursor-pointer hover:opacity-50 ${
-                    activeTab === "Brawlers"
-                      ? "bg-white text-black"
-                      : "bg-transparent"
-                  }`}
-                  onClick={() => handleClick("Brawlers")}
-                >
-                  Brawler Stats
-                </div>
-                <div
-                  className={`mx-2 text-bold w-40 p-3 rounded-lg cursor-pointer hover:opacity-50 ${
-                    activeTab === "Calculator"
-                      ? "bg-white text-black"
-                      : "bg-transparent"
-                  }`}
-                  onClick={() => handleClick("Calculator")}
-                >
-                  Upgrade Calculator
-                </div>
-              </div>
+              )}
 
               {activeTab === "Profile" &&
                 (playerInfo.trophies > 0 ? (
@@ -197,7 +200,7 @@ function Home() {
                 </div>
               )}
               {activeTab === "Calculator" && (
-                <div className="text-black w-2/3">
+                <div className="text-black min-w-2/3">
                   <SearchBar brawlerStatList={playerInfo.brawlers} />
                 </div>
               )}

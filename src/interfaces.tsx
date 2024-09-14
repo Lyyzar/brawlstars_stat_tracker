@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 const myPlayerTag = "GQ2UJRJR";
 
 export interface Player {
@@ -69,6 +71,16 @@ export interface CardProps {
   power: number;
 }
 
+export interface CalculatorRightSideProps {
+  iconNumbers: IconNumbers;
+  isToggled: boolean;
+  setIsToggled: Dispatch<SetStateAction<boolean>>;
+  requiredCoins: number;
+  setRequiredCoins: Dispatch<SetStateAction<number>>;
+  requiredPowerPoints: number;
+  handleMaxOut: () => void;
+}
+
 export const emptyBrawlerStat = {
   gadgets: [],
   starPowers: [],
@@ -79,6 +91,18 @@ export const emptyBrawlerStat = {
   power: 0,
   gears: [],
   name: "",
+};
+
+export interface IconNumbers {
+  starPowers: number;
+  gadgets: number;
+  gears: number;
+}
+
+export const emptyIconNumbers = {
+  starPowers: -1,
+  gadgets: -1,
+  gears: -1,
 };
 
 export const gadgets = [
