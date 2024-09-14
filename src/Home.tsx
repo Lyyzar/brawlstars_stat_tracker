@@ -50,6 +50,7 @@ function Home() {
         description: "You are successfully queried your information!",
       });
       setShowTabs(true);
+      setActiveTab("Profile");
     } catch (error) {
       console.log(error, "error");
       notification.error({
