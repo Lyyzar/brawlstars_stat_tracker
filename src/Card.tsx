@@ -37,8 +37,7 @@ const Card: React.FC<BrawlerStat> = ({
   return (
     <div
       id="main"
-      className="flex max-w-[400px] m-10 bg-red-600 rounded-lg text-white transform hover:scale-105 transition-transform duration-300"
-      //onClick={handleClick}
+      className="flex max-w-[400px] m-10 font-lilita bg-gray-600 border border-2 rounded-lg text-white transform hover:scale-105 transition-transform duration-300"
     >
       <div id="image" className="h-48 w-auto">
         <img
@@ -49,7 +48,7 @@ const Card: React.FC<BrawlerStat> = ({
       </div>
       <div className="w-full my-2">
         <div id="1st row" className="flex flex-row mb-2">
-          <div className="font-semibold text-xl mx-2">{name.toUpperCase()}</div>
+          <div className=" text-xl mx-2">{name.toUpperCase()}</div>
           <div className="mb-2 flex items-center justify-center w-8 h-8 bg-pink-500 border border-black border-1 shadow-lg rounded-full">
             <div className="flex items-center justify-center w-5 h-5 bg-purple-900 rounded-full">
               <span className="flex items-center justify-center text-white text-xs font-bold shadow-lg">
@@ -79,17 +78,15 @@ const Card: React.FC<BrawlerStat> = ({
 
         <div id="rank" className="flex  mb-2">
           <img src={rankImageSource} alt="rank" className="w-6 h-6 mx-2" />
-          <div>Rank: {rank}</div>
+          <div>RANK: {rank}</div>
         </div>
         <div id="highest_trophies" className="flex mx-2 mb-2">
           <img src="./assets/trophy.png" alt="trophy" className="w-6 h-6" />
-          <div className="font-bold ml-2">
-            Highest trophies: {highestTrophies}
-          </div>
+          <div className="font ml-2">HIGHEST TROPHIES: {highestTrophies}</div>
         </div>
         <div id="trophy" className="flex mx-2">
           <img src="./assets/trophy.png" alt="trophy" className="w-6 h-6 " />
-          <div className="ml-2">Current trophies: {trophies}</div>
+          <div className="ml-2">CURRENT TROPHIES: {trophies}</div>
         </div>
       </div>
     </div>
