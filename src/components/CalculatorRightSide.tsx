@@ -1,5 +1,5 @@
 import React from "react";
-import { CalculatorRightSideProps } from "./interfaces";
+import { CalculatorRightSideProps } from "../interfaces";
 
 const CalculatorRightSide: React.FC<CalculatorRightSideProps> = ({
   iconNumbers,

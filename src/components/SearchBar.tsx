@@ -5,7 +5,7 @@ import {
   emptyBrawlerStat,
   emptyIconNumbers,
   SearchBarProps,
-} from "./interfaces";
+} from "../interfaces";
 import Card from "./Card";
 import CalculatorRightSide from "./CalculatorRightSide";
 

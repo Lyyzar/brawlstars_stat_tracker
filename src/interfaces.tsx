@@ -71,6 +71,10 @@ export interface CardProps {
   power: number;
 }
 
+export interface ProfileTabProps {
+  player: Player;
+}
+
 export interface CalculatorRightSideProps {
   iconNumbers: IconNumbers;
   isToggled: boolean;

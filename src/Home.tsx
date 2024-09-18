@@ -2,8 +2,9 @@ import { notification } from "antd";
 import React, { useState } from "react";
 import { getPlayerInfo } from "./api";
 import { Player } from "./interfaces";
-import Card from "./Card";
-import SearchBar from "./SearchBar";
+import Card from "./components/Card";
+import SearchBar from "./components/SearchBar";
+import ProfileTab from "./components/ProfileTab";
 
 function Home() {
   const [activeTab, setActiveTab] = useState<string>("Profile");
@@ -28,18 +29,6 @@ function Home() {
     nameColor: "#000000",
   });
 
-  const my_Data = {
-    name: playerInfo.name,
-    tag: playerInfo.tag,
-    club: playerInfo.club.name,
-    highestTrophies: playerInfo.highestTrophies,
-    trophies: playerInfo.trophies,
-    "3vs3Victories": playerInfo["3vs3Victories"],
-    icon: playerInfo.icon,
-    soloVictories: playerInfo.soloVictories,
-    duoVictories: playerInfo.duoVictories,
-  };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
@@ -58,10 +47,6 @@ function Home() {
         description: "Your playertag is incorrect!",
       });
     }
-  };
-
-  const handleTabClick = (text: string) => {
-    setActiveTab(text);
   };
 
   return (
@@ -132,7 +117,7 @@ function Home() {
                         ? "bg-white text-black"
                         : "bg-transparent"
                     }`}
-                    onClick={() => handleTabClick("Profile")}
+                    onClick={() => setActiveTab("Profile")}
                   >
                     Your Stats
                   </div>
@@ -142,7 +127,7 @@ function Home() {
                         ? "bg-white text-black"
                         : "bg-transparent"
                     }`}
-                    onClick={() => handleTabClick("Brawlers")}
+                    onClick={() => setActiveTab("Brawlers")}
                   >
                     Brawler Stats
                   </div>
@@ -152,7 +137,7 @@ function Home() {
                         ? "bg-white text-black"
                         : "bg-transparent"
                     }`}
-                    onClick={() => handleTabClick("Calculator")}
+                    onClick={() => setActiveTab("Calculator")}
                   >
                     Upgrade Calculator
                   </div>
@@ -161,134 +146,9 @@ function Home() {
 
               {activeTab === "Profile" &&
                 (playerInfo.trophies > 0 ? (
-                  <div
-                    style={{
-                      backgroundImage:
-                        "url('/assets/banners/banner_bp_spongebob.png')",
-                      position: "relative",
-                    }}
-                    className="bg-cover bg-center text-left mx-auto w-[700px] h-[300px] text-white text-outline-black font-lilita rounded"
-                  >
-                    <div className="absolute inset-0 bg-black opacity-40 z-0 rounded"></div>
-                    <div className="relative">
-                      <div
-                        className="mx-4 mt-2 text-3xl"
-                        style={{ color: `#${playerInfo.nameColor.slice(-6)}` }}
-                      >
-                        {playerInfo.name.toUpperCase()}
-                      </div>
-                      <div className="flex flex-row justify-evenly">
-                        <div
-                          id="trophies"
-                          className="flex flex-col justify-center mt-2 w-[200px]"
-                        >
-                          <div className="mx-auto text-center">
-                            <div id="trophies-png">
-                              <img
-                                className="w-9 h-7 mt-2 mx-5"
-                                src="/assets/trophy.png"
-                                alt="trophy"
-                              />
-                              <div className="text-lg">TROPHIES</div>
-                            </div>
-                            <div className="text-md text-gray-400">CURRENT</div>
-                            <div className="flex items-center bg-blue-800 w-[fit-content] px-2 py-1 rounded">
-                              <img
-                                className="w-5 h-4"
-                                src="/assets/trophy.png"
-                                alt="trophy"
-                              />
-                              <div className="ml-2">{playerInfo.trophies}</div>
-                            </div>
-                            <div className="text-md text-gray-400">HIGHEST</div>
-                            <div className="flex items-center bg-blue-800 w-[fit-content] px-2 py-1 rounded">
-                              <img
-                                className="w-5 h-4"
-                                src="/assets/trophy.png"
-                                alt="trophy"
-                              />
-                              <div className="ml-2">
-                                {playerInfo.highestTrophies}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          id="victories"
-                          className="flex flex-col mx-auto text-center mt-2 w-[200px]"
-                        >
-                          <div
-                            id="text-3vs3"
-                            className="flex flex-col items-center"
-                          >
-                            <div className="text-md text-gray-400">
-                              3 VS 3 VICTORIES
-                            </div>
-                            <div
-                              id="3vs3"
-                              className="flex items-center bg-blue-800 w-[fit-content] px-2 py-1 rounded"
-                            >
-                              <img
-                                className="w-5 h-4"
-                                src="/assets/3vs3victories.png"
-                                alt="3vs3"
-                              />
-                              <div className="ml-2">
-                                {playerInfo["3vs3Victories"]}
-                              </div>
-                            </div>
-                          </div>
-                          <div className="flex flex-col items-center">
-                            <div className="text-md text-gray-400">
-                              SOLO VICTORIES
-                            </div>
-                            <div className="flex items-center bg-blue-800 w-[fit-content] px-2 py-1 rounded">
-                              <img
-                                className="w-5 h-4"
-                                src="/assets/solo_showdown.png"
-                                alt="trophy"
-                              />
-                              <div className="ml-2">
-                                {playerInfo.soloVictories}
-                              </div>
-                            </div>
-                          </div>
-                          <div className="flex flex-col items-center">
-                            <div className="text-md text-gray-400">
-                              DUO VICTORIES
-                            </div>
-                            <div className="flex items-center bg-blue-800 w-[fit-content] px-2 py-1 rounded">
-                              <img
-                                className="w-5 h-4"
-                                src="/assets/duo_showdown.png"
-                                alt="trophy"
-                              />
-                              <div className="ml-2">
-                                {playerInfo.duoVictories}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          id="club"
-                          className="flex flex-col justify-center mt-2 w-[200px]"
-                        >
-                          <div className="mx-auto text-center">
-                            <div className="text-lg">CLUB</div>
-                            <div className="flex items-center bg-blue-800 w-[fit-content] px-2 py-1 rounded">
-                              <img
-                                className="w-5 h-5"
-                                src="/assets/icon_club_badge_7.png"
-                                alt="trophy"
-                              />
-                              <div className="ml-2">{playerInfo.club.name}</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <ProfileTab player={playerInfo} />
                 ) : null)}
+
               {activeTab === "Brawlers" && (
                 <div className="flex flex-wrap h-[800px] w-2/8 overflow-y-scroll justify-center bg-gray-600 bg-opacity-50 mx-auto">
                   {playerInfo.brawlers.map((brawler) => (

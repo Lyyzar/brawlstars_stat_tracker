@@ -1,4 +1,4 @@
-import { BrawlerStat } from "./interfaces";
+import { BrawlerStat } from "../interfaces";
 
 const Card: React.FC<BrawlerStat> = ({
   gadgets,
