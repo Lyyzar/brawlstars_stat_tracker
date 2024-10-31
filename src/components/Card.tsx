@@ -37,9 +37,9 @@ const Card: React.FC<BrawlerStat> = ({
   return (
     <div
       id="main"
-      className="flex max-w-[400px] m-10 font-lilita bg-gray-600 border border-2 rounded-lg text-white transform hover:scale-105 transition-transform duration-300"
+      className="flex 2xl:min-w-[300px] max-w-[400px] sm:min-w-[200px] m-10 font-lilita bg-gray-600 border border-2 rounded-lg text-white transform hover:scale-105 transition-transform duration-300"
     >
-      <div id="image" className="h-48 w-auto">
+      <div id="image" className=" h-20 sm:h-20 md:h-full w-auto">
         <img
           src={imageSource}
           className="h-full w-full rounded-l"
@@ -80,13 +80,19 @@ const Card: React.FC<BrawlerStat> = ({
           <img src={rankImageSource} alt="rank" className="w-6 h-6 mx-2" />
           <div>RANK: {rank}</div>
         </div>
-        <div id="highest_trophies" className="flex mx-2 mb-2">
-          <img src="./assets/trophy.png" alt="trophy" className="w-6 h-6" />
-          <div className="font ml-2">HIGHEST TROPHIES: {highestTrophies}</div>
+        <div id="highest_trophies" className="flex flex-col mx-2 mb-2">
+          <div className="flex flex-row">
+            <img src="./assets/trophy.png" alt="trophy" className="w-6 h-6" />
+            <div className="font ml-2">HIGHEST TROPHIES</div>
+          </div>
+          <div>{highestTrophies}</div>
         </div>
-        <div id="trophy" className="flex mx-2">
-          <img src="./assets/trophy.png" alt="trophy" className="w-6 h-6 " />
-          <div className="ml-2">CURRENT TROPHIES: {trophies}</div>
+        <div id="trophies" className="flex flex-col mx-2 mb-2">
+          <div className="flex flex-row">
+            <img src="./assets/trophy.png" alt="trophy" className="w-6 h-6" />
+            <div className="font ml-2">CURRENT TROPHIES</div>
+          </div>
+          <div>{trophies}</div>
         </div>
       </div>
     </div>

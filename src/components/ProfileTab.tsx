@@ -4,6 +4,7 @@ const ProfileTab: React.FC<ProfileTabProps> = ({ player }) => {
   const value = Math.floor(Math.random() * 8) + 1;
 
   const imageSource = `/assets/banners/banner_bp_${value}.png`;
+  const iconSource = `https://brawlace.com/assets/images/brawlstars/icons-players/${player.icon.id}.png`;
 
   return (
     <div
@@ -11,14 +12,15 @@ const ProfileTab: React.FC<ProfileTabProps> = ({ player }) => {
         backgroundImage: `url('${imageSource}')`,
         position: "relative",
       }}
-      className="bg-cover bg-center text-left mx-auto w-[700px] h-[300px] text-white text-outline-black font-lilita rounded"
+      className="bg-cover bg-center mx-auto w-full h-[300px] text-white text-outline-black font-lilita rounded"
     >
       <div className="absolute inset-0 bg-black opacity-40 z-0 rounded"></div>
       <div className="relative">
         <div
-          className="mx-4 mt-2 text-3xl"
+          className="flex flex-row mx-4 pl-10 mt-2 text-3xl text-left items-center"
           style={{ color: `#${player.nameColor.slice(-6)}` }}
         >
+          <img className="w-16 h-16 mr-2" src={iconSource} alt="icon" />
           {player.name.toUpperCase()}
         </div>
         <div className="flex flex-row justify-evenly">

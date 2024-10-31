@@ -5,6 +5,7 @@ import { Player } from "./interfaces";
 import Card from "./components/Card";
 import SearchBar from "./components/SearchBar";
 import ProfileTab from "./components/ProfileTab";
+import NavBar from "./components/NavBar";
 
 function Home() {
   const [activeTab, setActiveTab] = useState<string>("Profile");
@@ -50,41 +51,14 @@ function Home() {
   };
 
   return (
-    <div className="h-screen text-gray-800">
-      {/* Header Section */}
-      <header className="bg-white text-black">
-        <nav className="container mx-auto flex justify-between items-center py-4">
-          <div className="text-lg font-bold">Brawlstars Stats</div>
-          <ul className="flex space-x-6">
-            <li>
-              <a href="#" className="hover:text-gray-300">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="/about" className="hover:text-gray-300">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-300">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-gray-300">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </header>
-
-      {/* Hero Section */}
-      <section className="bg-[url('https://supercell.com/images/1a5b69311180a4a1c374e10556941f05/hero_bg_brawlstars.a385872a.webp')] bg-cover bg-center  h-screen ">
+    <div className="h-screen">
+      <NavBar />
+      <div className="bg-[url('https://supercell.com/images/1a5b69311180a4a1c374e10556941f05/hero_bg_brawlstars.a385872a.webp')] bg-cover bg-center border border-yellow-400 border-5 h-full">
         <div className="flex pt-24 justify-center h-full bg-black bg-opacity-50">
-          <div className="text-center w-1/2 text-white">
-            <h1 className="text-5xl font-bold mb-4">Enter your Player Tag!</h1>
+          <div className="flex flex-col text-center w-1/2 sm:w-1/2 lg:w-2/3 text-white">
+            <h1 className="md:text-5xl sm:text-2xl font-bold mb-4">
+              Enter your Player Tag!
+            </h1>
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
@@ -104,7 +78,7 @@ function Home() {
             </form>
             <div
               id="container-for-tabs-and-data"
-              className="flex flex-col h-screen items-center"
+              className="flex flex-col h-full w-auto items-center mb-10"
             >
               {showTabs && (
                 <div
@@ -150,7 +124,7 @@ function Home() {
                 ) : null)}
 
               {activeTab === "Brawlers" && (
-                <div className="flex flex-wrap h-[800px] w-2/8 overflow-y-scroll justify-center bg-gray-600 bg-opacity-50 mx-auto">
+                <div className="grid sm:grid-cols-1  lg:grid-cols-1 2xl:grid-cols-2 gap-4 h-[800px] w-auto overflow-y-scroll justify-center bg-gray-600 bg-opacity-50 mx-auto">
                   {playerInfo.brawlers.map((brawler) => (
                     <Card
                       rank={brawler.rank}
@@ -174,9 +148,8 @@ function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Main Content Section */}
       <main className="container mx-auto py-10">
         <section id="services" className="text-center">
           <h2 className="text-3xl font-bold mb-8">Our Services</h2>
@@ -184,21 +157,19 @@ function Home() {
             <div className="p-6 bg-white rounded-lg shadow-lg">
               <h3 className="text-xl font-bold mb-4">Track your stats</h3>
               <p>
-                We provide stats about your account using the Brawl Stars API
+                We provide stats about your account using the original Brawl
+                Stars API
               </p>
+            </div>
+            <div className="p-6 bg-white rounded-lg shadow-lg">
+              <h3 className="text-xl font-bold mb-4">Brawler stats</h3>
+              <p>We offer a detailed look on your brawlers.</p>
             </div>
             <div className="p-6 bg-white rounded-lg shadow-lg">
               <h3 className="text-xl font-bold mb-4">Upgrade Calculator</h3>
               <p>
                 Our team developed a calculator where you can calculate any
                 upgrade for your brawlers
-              </p>
-            </div>
-            <div className="p-6 bg-white rounded-lg shadow-lg">
-              <h3 className="text-xl font-bold mb-4">Cloud Solutions</h3>
-              <p>
-                We offer secure cloud-based solutions tailored to your business
-                needs.
               </p>
             </div>
           </div>
