@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "version": "1.0.0",
+  "homepage": "https://lyyzar.github.io/brawlstars_stat_tracker",
   "proxy": "https://api.brawlstars.com",
   "private": true,
   "dependencies": {
