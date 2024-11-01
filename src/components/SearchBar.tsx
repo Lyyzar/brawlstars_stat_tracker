@@ -49,13 +49,13 @@ const SearchBar: React.FC<SearchBarProps> = ({ brawlerStatList }) => {
     0, 20, 50, 100, 180, 310, 520, 860, 1410, 2300, 3740,
   ];
 
-  const upgradeCoinLevelPrices = [
-    0, 20, 35, 75, 140, 290, 480, 800, 1250, 1875, 2800,
-  ];
+  //const upgradeCoinLevelPrices = [
+  //  0, 20, 35, 75, 140, 290, 480, 800, 1250, 1875, 2800,
+  // ];
 
-  const upgradeLevelPowerPoints = [
-    0, 20, 30, 50, 80, 130, 210, 340, 550, 890, 1440,
-  ];
+  //const upgradeLevelPowerPoints = [
+  //  0, 20, 30, 50, 80, 130, 210, 340, 550, 890, 1440,
+  //];
 
   const handleMaxOut = () => {
     let reqCoins = 0;

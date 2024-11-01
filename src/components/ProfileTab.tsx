@@ -42,7 +42,7 @@ const ProfileTab: React.FC<ProfileTabProps> = ({ player }) => {
                 <img
                   className="w-5 h-4"
                   src="/assets/trophy.png"
-                  alt="trophy"
+                  alt="trophy1"
                 />
                 <div className="ml-2">{player.trophies}</div>
               </div>
@@ -51,7 +51,7 @@ const ProfileTab: React.FC<ProfileTabProps> = ({ player }) => {
                 <img
                   className="w-5 h-4"
                   src="/assets/trophy.png"
-                  alt="trophy"
+                  alt="trophy2"
                 />
                 <div className="ml-2">{player.highestTrophies}</div>
               </div>
@@ -81,7 +81,7 @@ const ProfileTab: React.FC<ProfileTabProps> = ({ player }) => {
                 <img
                   className="w-5 h-4"
                   src="/assets/solo_showdown.png"
-                  alt="trophy"
+                  alt="trophy3"
                 />
                 <div className="ml-2">{player.soloVictories}</div>
               </div>
@@ -92,7 +92,7 @@ const ProfileTab: React.FC<ProfileTabProps> = ({ player }) => {
                 <img
                   className="w-5 h-4"
                   src="/assets/duo_showdown.png"
-                  alt="trophy"
+                  alt="trophy4"
                 />
                 <div className="ml-2">{player.duoVictories}</div>
               </div>
@@ -108,7 +108,7 @@ const ProfileTab: React.FC<ProfileTabProps> = ({ player }) => {
                 <img
                   className="w-5 h-5"
                   src="/assets/icon_club_badge_7.png"
-                  alt="trophy"
+                  alt="trophy5"
                 />
                 <div className="ml-2">{player.club.name}</div>
               </div>

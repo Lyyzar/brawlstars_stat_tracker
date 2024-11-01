@@ -61,7 +61,7 @@ const Card: React.FC<BrawlerStat> = ({
               <img
                 className="w-10 h-10"
                 src="/assets/gadget.webp"
-                alt="star_power"
+                alt="star_power1"
               />
             ) : null}
           </div>
@@ -70,7 +70,7 @@ const Card: React.FC<BrawlerStat> = ({
               <img
                 className="w-10 h-10"
                 src="/assets/star_power.webp"
-                alt="star_power"
+                alt="star_power2"
               />
             ) : null}
           </div>
@@ -82,14 +82,14 @@ const Card: React.FC<BrawlerStat> = ({
         </div>
         <div id="highest_trophies" className="flex flex-col mx-2 mb-2">
           <div className="flex flex-row">
-            <img src="./assets/trophy.png" alt="trophy" className="w-6 h-6" />
+            <img src="./assets/trophy.png" alt="trophy1" className="w-6 h-6" />
             <div className="font ml-2">HIGHEST TROPHIES</div>
           </div>
           <div>{highestTrophies}</div>
         </div>
         <div id="trophies" className="flex flex-col mx-2 mb-2">
           <div className="flex flex-row">
-            <img src="./assets/trophy.png" alt="trophy" className="w-6 h-6" />
+            <img src="./assets/trophy.png" alt="trophy2" className="w-6 h-6" />
             <div className="font ml-2">CURRENT TROPHIES</div>
           </div>
           <div>{trophies}</div>

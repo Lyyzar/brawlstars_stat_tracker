@@ -76,7 +76,7 @@ const CalculatorRightSide: React.FC<CalculatorRightSideProps> = ({
           <p>
             Required coins: {Intl.NumberFormat("de-De").format(requiredCoins)}
           </p>
-          <img className="w-8 h-7" src="/assets/coin_icon.png" alt="coin" />
+          <img className="w-8 h-7" src="/assets/coin_icon.png" alt="coin1" />
         </div>
         <div className="flex items-center mb-2">
           <p>
@@ -86,7 +86,7 @@ const CalculatorRightSide: React.FC<CalculatorRightSideProps> = ({
           <img
             className="w-16 h-16"
             src="/assets/power_points_icon.png"
-            alt="coin"
+            alt="coin2"
           />
         </div>
       </div>

@@ -5,7 +5,7 @@ const NavBar = () => {
         <div className="text-lg font-bold">Brawlstars Stats</div>
         <ul className="flex space-x-6 mx-2">
           <li>
-            <a href="#" className="hover:text-gray-300">
+            <a href="/" className="hover:text-gray-300">
               Home
             </a>
           </li>
@@ -15,12 +15,12 @@ const NavBar = () => {
             </a>
           </li>
           <li>
-            <a href="#" className="hover:text-gray-300">
+            <a href="/" className="hover:text-gray-300">
               Services
             </a>
           </li>
           <li>
-            <a href="#" className="hover:text-gray-300">
+            <a href="/" className="hover:text-gray-300">
               Contact
             </a>
           </li>
