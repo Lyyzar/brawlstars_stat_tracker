@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/brawlstars_stat_tracker/static/css/main.38b60eab.css",
-    "main.js": "/brawlstars_stat_tracker/static/js/main.74148769.js",
+    "main.js": "/brawlstars_stat_tracker/static/js/main.226a3b67.js",
     "index.html": "/brawlstars_stat_tracker/index.html",
     "main.38b60eab.css.map": "/brawlstars_stat_tracker/static/css/main.38b60eab.css.map",
-    "main.74148769.js.map": "/brawlstars_stat_tracker/static/js/main.74148769.js.map"
+    "main.226a3b67.js.map": "/brawlstars_stat_tracker/static/js/main.226a3b67.js.map"
   },
   "entrypoints": [
     "static/css/main.38b60eab.css",
-    "static/js/main.74148769.js"
+    "static/js/main.226a3b67.js"
   ]
 }
