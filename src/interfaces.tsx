@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 
-const myPlayerTag = "GQ2UJRJR";
+//const myPlayerTag = "GQ2UJRJR";
 
 export interface Player {
   club: PlayerClub;

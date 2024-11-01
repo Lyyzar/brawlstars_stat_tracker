@@ -43,7 +43,7 @@ const Card: React.FC<BrawlerStat> = ({
         <img
           src={imageSource}
           className="h-full w-full rounded-l"
-          alt="brawler image"
+          alt="brawler"
         />
       </div>
       <div className="w-full my-2">
