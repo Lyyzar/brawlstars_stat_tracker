@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import Card from "./components/Card";
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -25,7 +25,7 @@ const App: React.FC = () => {
           }
         />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 };
 
